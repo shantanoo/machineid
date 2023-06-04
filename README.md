@@ -59,7 +59,7 @@ import (
 )
 
 func main() {
-  id, err := machineid.ProtectedID("myAppName")
+  id, err := machineid.ProtectedID("myAppName", "")
   if err != nil {
     log.Fatal(err)
   }
@@ -71,9 +71,9 @@ func main() {
 
 Returns original machine id as a `string`.
 
-### Function: ProtectedID(appID string) (string, error)
+### Function: ProtectedID(appID, id string) (string, error)
 
-Returns hashed version of the machine ID as a `string`. The hash is generated in a cryptographically secure way, using a fixed, application-specific key (calculates HMAC-SHA256 of the app ID, keyed by the machine ID).
+Returns hashed version of the machine ID as a `string`. The hash is generated in a cryptographically secure way, using a fixed, application-specific key (calculates HMAC-SHA256 of the app ID, keyed by the machine ID). If id is empty string, id is set to value returned by ID()
 
 ## What you get
 
