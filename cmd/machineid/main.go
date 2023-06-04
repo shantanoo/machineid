@@ -3,11 +3,13 @@
 // Usage: machineid [options]
 //
 // Options:
-//   --appid    <AppID>    Protect machine id by hashing it together with an app id.
+//
+//	--appid    <AppID>    Protect machine id by hashing it together with an app id.
 //
 // Try:
-//   machineid
-//   machineid --appid MyAppID
+//
+//	machineid
+//	machineid --appid MyAppID
 package main
 
 import (
@@ -15,7 +17,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/denisbrodbeck/machineid"
+	"github.com/shantanoo/machineid"
 )
 
 const usageStr = `
@@ -44,7 +46,7 @@ func main() {
 	var id string
 	var err error
 	if appID != "" {
-		id, err = machineid.ProtectedID(appID)
+		id, err = machineid.ProtectedID(appID, "")
 	} else {
 		id, err = machineid.ID()
 	}

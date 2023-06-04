@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/denisbrodbeck/machineid"
+	"github.com/shantanoo/machineid"
 )
 
 func Example() {
@@ -17,7 +17,7 @@ func Example() {
 
 func Example_protected() {
 	appID := "Corp.SomeApp"
-	id, err := machineid.ProtectedID(appID)
+	id, err := machineid.ProtectedID(appID, "")
 	if err != nil {
 		log.Fatal(err)
 	}

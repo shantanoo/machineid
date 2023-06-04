@@ -17,7 +17,7 @@ func TestProtectedID(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	hash, err := ProtectedID("app.id")
+	hash, err := ProtectedID("app.id", "")
 	if err != nil {
 		t.Error(err)
 	}

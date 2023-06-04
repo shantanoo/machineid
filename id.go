@@ -17,7 +17,7 @@
 // Linux users can generate a new id with `dbus-uuidgen` and put the id into
 // `/var/lib/dbus/machine-id` and `/etc/machine-id`.
 // Windows users can use the `sysprep` toolchain to create images, which produce valid images ready for distribution.
-package machineid // import "github.com/denisbrodbeck/machineid"
+package machineid // import "github.com/shantanoo/machineid"
 
 import (
 	"fmt"
@@ -36,8 +36,11 @@ func ID() (string, error) {
 // ProtectedID returns a hashed version of the machine ID in a cryptographically secure way,
 // using a fixed, application-specific key.
 // Internally, this function calculates HMAC-SHA256 of the application ID, keyed by the machine ID.
-func ProtectedID(appID string) (string, error) {
-	id, err := ID()
+func ProtectedID(appID string, id string) (string, error) {
+	var err error
+	if id == "" {
+		id, err = ID()
+	}
 	if err != nil {
 		return "", fmt.Errorf("machineid: %v", err)
 	}
